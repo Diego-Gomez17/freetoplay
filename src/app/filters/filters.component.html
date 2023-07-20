@@ -1,27 +1,14 @@
-<div class="cont-filters container">
-  <form [formGroup]="filterForm" (ngSubmit)="submitFilter()" >
-    <legend>Filtro</legend>
-    <div class="mb-3">
-      <label for="" class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="name">
-    </div>
-    <div class="mb-3">
-      <label for="" class="form-label">Genero</label>
-      <select formControlName="gender" class="form-select">
-        <option selected value="">Seleccione un genero</option>
-        <!-- Otras opciones -->
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="" class="form-label">Plataforma</label>
-      <select formControlName="platform" class="form-select">
-        <option selected value="">Seleccione una plataforma</option>
-        <!-- Otras opciones -->
-      </select>
-    </div>
-    <div class="cont-button">
-      <button type="submit" class="btn btn-success">Buscar</button>
-      <button type="button" class="btn btn-warning" (click)="clearForm()">Limpiar</button>
-    </div>
-  </form>
+<div class="filters">
+  <label for="" style="color: aliceblue;">Titulo</label>
+  <input type="text" class="form-control" name="filterName" [(ngModel)]="filterName">
+  <label for="" style="color: aliceblue;">Genero</label>
+  <select class="form-select" [(ngModel)]="filterGender">
+    <option value="" style="color: black;">Seleccione un genero</option>
+    <option *ngFor="let gender of genres" [value]="gender">{{gender}}</option>
+  </select>
+  <label for="" style="color: aliceblue;">Plataforma</label>
+  <select class="form-select" [(ngModel)]="filterPlatform">
+    <option value="" style="color: black;">Seleccione un genero</option>
+    <option *ngFor="let platform of platforms" [value]="platform">{{platform}}</option>
+  </select>
 </div>

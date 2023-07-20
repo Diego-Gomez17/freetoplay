@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataService } from '../services/get-free-game.service';
+import { GetCardGame } from './get-free-game.service';
 
-describe('DataService', () => {
-  let service: DataService;
+describe('GetCardGame', () => {
+  let service: GetCardGame;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataService);
+    service = TestBed.inject(GetCardGame);
   });
 
   it('should be created', () => {

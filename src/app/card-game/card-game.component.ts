@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild   } from '@angular/core';
-import { DataService } from '../services/get-free-game.service';
-import { GameService } from '../services/game.service';
-import { FiltersComponent } from '../filters/filters.component';
-import { take } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+
+import { CardGame } from '../models/card-game.models';
+import { GetCardGame } from '../services/get-free-game/get-free-game.service';
+import { GameService } from '../services/games/game.service';
 import { Observable } from 'rxjs';
-
-
 
 
 
@@ -16,40 +14,48 @@ import { Observable } from 'rxjs';
 })
 export class CardGameComponent implements OnInit {
 
-  games$!: Observable<any[]>;
   public gameService!: GameService;
-  allGames: any[] = []; // Variable para almacenar todos los juegos sin filtrar
-  @ViewChild(FiltersComponent) filtersComponent!: FiltersComponent; // Obtener una referencia al componente FiltersComponent
+  public games$!: Observable<CardGame[]>;
 
+  //gender
+  public genres: string[] = [];
+  //platform
+  public platforms: string[] = [];
 
-  constructor( gameService: GameService, private dataService: DataService) {
+  constructor( gameService: GameService, private GetCardGame: GetCardGame) {
     this.gameService = gameService;
   }
 
+  filterName="";
+  filterGender="";
+  filterPlatform="";
+
+
+
   ngOnInit(): void {
     this.getDataGame();
-    this.gameService.getGames().subscribe(games => {
-      this.games$ = this.gameService.getGames();
-    });
+    this.games$ = this.gameService.getGames();
   }
 
   getDataGame(): void {
-    this.dataService.getData().subscribe(
-      response => {
-        this.gameService.setGames(response);
-        this.allGames=response
-        //logs
-        console.log(this.allGames)
-        this.gameService.getGames().pipe(take(1)).subscribe(games => {
-          console.log(games);
-        })
+    this.GetCardGame.getData().subscribe(
+      data => {
+        const transformedData: CardGame[] = data.map((game: any) => ({
+          id: game.id,
+          title: game.title,
+          thumbnail: game.thumbnail,
+          short_description: game.short_description,
+          genre: game.genre,
+          platform: game.platform,
+        }));
+        this.gameService.setGames(transformedData);
+        this.genres = [...new Set(transformedData.map(game => game.genre))];
+        this.platforms = [...new Set(transformedData.map(game => game.platform))];
+
       },
       error => {
         console.error(error);
       }
     );
-  }
-  clearFilter() {
-    this.filtersComponent.clearForm(); // Llamar a la función clearForm() del componente FiltersComponent
   }
 }

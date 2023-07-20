@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { GameService } from '../services/games/game.service';
+import { Observable } from 'rxjs';
 
-import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'filters-games',
@@ -9,35 +9,19 @@ import { GameService } from '../services/game.service';
   styleUrls: ['./filters.component.css'],
 })
 export class FiltersComponent implements OnInit {
-  searchName!: string;
-  filterForm!: FormGroup;
-  @Output() clearFilterEvent = new EventEmitter<void>();
+
+  public genres: string[] = [];
+  public platforms: string[] = [];
+
+  filterName="";
+  filterGender="";
+  filterPlatform="";
 
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private gameService: GameService
-  ) {}
+  constructor(private gameService: GameService) { }
 
   ngOnInit() {
-
-    this.filterForm = this.formBuilder.group({
-      name: [''],
-      gender: [''],
-      platform: [''],
-    });
   }
 
-  submitFilter() {
-    const filters = this.filterForm.value;
-    console.log(filters);
 
-    this.gameService.filterGames(filters);
-
-  }
-
-  public clearForm() {
-    this.filterForm.reset();
-    this.clearFilterEvent.emit();
-  }
 }

@@ -1,12 +1,19 @@
 .cont-games{
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  gap: 20px;
 
   background-color: rgb(56, 77, 94);
   border: 1px solid black;
   border-radius: 45px;
   padding: 25px;
+}
+.cont-card{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
 }
