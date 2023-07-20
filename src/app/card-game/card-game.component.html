@@ -1,0 +1,18 @@
+<ng-container *ngIf="(games$ | async) as games">
+  <div class="cont-games " *ngIf="games.length > 0; else noGames">
+    <div class="card" style="width: 18rem;" *ngFor="let game of gameService.getGames() | async">
+      <img class="card-img-top" src="{{game.thumbnail}}" alt="Card image">
+      <div class="card-body">
+        <h5 class="card-title">{{ game.title }}</h5>
+        <p class="card-text">{{ game.short_description }}</p>
+      </div>
+      <a href="#" class="btn btn-success moreInfo">Más información</a>
+    </div>
+  </div>
+  <ng-template #noGames>
+    <div class="cont-games">
+      <!-- Aquí muestra la alerta cuando no hay juegos -->
+      <h2 style="color: white;">No se encontraron juegos</h2>
+    </div>
+  </ng-template>
+</ng-container>

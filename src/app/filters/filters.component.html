@@ -1,0 +1,27 @@
+<div class="cont-filters container">
+  <form [formGroup]="filterForm" (ngSubmit)="submitFilter()" >
+    <legend>Filtro</legend>
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Genero</label>
+      <select formControlName="gender" class="form-select">
+        <option selected value="">Seleccione un genero</option>
+        <!-- Otras opciones -->
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Plataforma</label>
+      <select formControlName="platform" class="form-select">
+        <option selected value="">Seleccione una plataforma</option>
+        <!-- Otras opciones -->
+      </select>
+    </div>
+    <div class="cont-button">
+      <button type="submit" class="btn btn-success">Buscar</button>
+      <button type="button" class="btn btn-warning" (click)="clearForm()">Limpiar</button>
+    </div>
+  </form>
+</div>

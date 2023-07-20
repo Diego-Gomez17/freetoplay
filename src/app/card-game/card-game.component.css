@@ -1,0 +1,12 @@
+.cont-games{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+
+  background-color: rgb(56, 77, 94);
+  border: 1px solid black;
+  border-radius: 45px;
+  padding: 25px;
+}
