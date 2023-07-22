@@ -1,0 +1,83 @@
+<div class="cont-games">
+  <h2 style="text-align: center;">{{game.title}}</h2>
+  <br>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="sidebar control-box">
+          <div class="card shadow mb-3 rounded ">
+            <img class="rounded" id="img-principal" [src]="game.thumbnail" alt="game image" width="331" height="201">
+            <div class="ps-3 pt-3 d-flex flex-row gap-5">
+              <div>
+                <p><b>Gender:</b> {{game.genre}}</p>
+                <p><b>Publisher:</b> {{game.publisher}}</p>
+                <p><b>Developer:</b> {{game.developer}}</p>
+                <p><b>Platform:</b> {{game.platform}}</p>
+                <p><b>Release Date:</b> {{game.release_date}}</p>
+              </div>
+              <div>
+                <p><b>Status:</b> {{game.status}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>{{game.description}}</p>
+        <br>
+        <h3>Game Website</h3>
+        <p><a href="{{game.game_url}}">{{game.game_url}}</a></p>
+        <br>
+        <div class="cont-screen " *ngIf="ScreenShots.length>1">
+          <h3>{{game.title}}: Screenshots</h3>
+          <div class="row">
+            <div class="col-md-4 ">
+              <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel" >
+                <div class="carousel-inner">
+                  <div class="carousel-item active" [class.active]="i === 0"  *ngFor="let screen of ScreenShots ; let i = index;">
+                    <img [src]="screen[1].image" class="d-block w-100" [alt]="screen[1].id">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+        <div *ngIf="MinrequirementsArray">
+          <h3>Minimum System Requirements</h3>
+          <ul>
+            <li *ngFor="let minR of MinrequirementsArray">
+              <b>{{minR[0]}}:</b> {{minR[1]}}
+            </li>
+          </ul>
+        </div>
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aut alias accusamus dignissimos
+          saepe ipsam consequuntur provident minus in maiores delectus voluptatem facere, neque, odio deleniti, omnis
+          minima tempore itaque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe cumque necessitatibus enim officia nulla,
+          voluptatem qui vitae quod velit, eaque molestiae praesentium architecto maxime unde ea. Optio quo rem tempore?
+        </p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium dolor temporibus ex corrupti rem
+          blanditiis. Nobis officiis vel eaque architecto, tenetur obcaecati ea labore nihil dolores molestias nam
+          eligendi delectus error? Soluta provident animi laudantium vel? Beatae temporibus facilis hic sunt doloribus.
+          Labore, optio!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim doloremque perferendis illum asperiores illo,
+          placeat corporis alias veritatis nisi, adipisci labore. Qui voluptatem laudantium pariatur facere eum. Non,
+          nostrum! Enim, a. Voluptates, ex doloremque.</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>

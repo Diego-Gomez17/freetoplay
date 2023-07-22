@@ -1,0 +1,27 @@
+.cont-games{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  background-color: rgb(56, 77, 94);
+  border: 1px solid black;
+  border-radius: 45px;
+  padding: 25px;
+}
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  z-index: 1;
+}
+#img-principal{
+  width: 100%;
+  height: 100%;
+
+}
+.card{
+  background-color: rgba(56, 15, 133, 0.096);
+  color: white;
+}

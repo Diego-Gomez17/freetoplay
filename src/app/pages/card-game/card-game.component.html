@@ -25,7 +25,7 @@
           <h5 class="card-title">{{ game.title }}</h5>
           <p class="card-text">{{ game.short_description }}</p>
         </div>
-        <a routerLink="/game-details" class="btn btn-success moreInfo">Más información</a>
+        <a [routerLink]="['/game-details', game.id]" class="btn btn-success moreInfo">Más información</a>
       </div>
     </div>
   </div>
@@ -35,3 +35,4 @@
     </div>
   </ng-template>
 </ng-container>
+

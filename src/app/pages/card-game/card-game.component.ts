@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CardGame } from '../models/card-game.models';
-import { GetCardGame } from '../services/get-free-game/get-free-game.service';
-import { GameService } from '../services/games/game.service';
+import { CardGame } from '../../models/card-game.models';
+import { GetCardGame } from '../../services/get-free-game/get-free-game.service';
+import { GameService } from '../../services/games/game.service';
 import { Observable } from 'rxjs';
 
 
