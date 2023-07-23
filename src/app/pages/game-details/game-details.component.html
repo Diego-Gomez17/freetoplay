@@ -1,13 +1,13 @@
-<div class="cont-games">
+<div class="{{controlWidth}}" *ngIf="game; else noGames">
   <h2 style="text-align: center;">{{game.title}}</h2>
   <br>
   <div class="container py-4">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 pl-2">
         <div class="sidebar control-box">
           <div class="card shadow mb-3 rounded ">
             <img class="rounded" id="img-principal" [src]="game.thumbnail" alt="game image" width="331" height="201">
-            <div class="ps-3 pt-3 d-flex flex-row gap-5">
+            <div class="ps-2 pt-3 d-flex flex-row gap-5">
               <div>
                 <p><b>Gender:</b> {{game.genre}}</p>
                 <p><b>Publisher:</b> {{game.publisher}}</p>
@@ -15,7 +15,7 @@
                 <p><b>Platform:</b> {{game.platform}}</p>
                 <p><b>Release Date:</b> {{game.release_date}}</p>
               </div>
-              <div>
+              <div class="pe-2">
                 <p><b>Status:</b> {{game.status}}</p>
               </div>
             </div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 cont-bodyGame">
         <p>{{game.description}}</p>
         <br>
         <h3>Game Website</h3>
@@ -32,11 +32,11 @@
         <div class="cont-screen " *ngIf="ScreenShots.length>1">
           <h3>{{game.title}}: Screenshots</h3>
           <div class="row">
-            <div class="col-md-4 ">
+            <div class="col-md-10">
               <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel" >
                 <div class="carousel-inner">
                   <div class="carousel-item active" [class.active]="i === 0"  *ngFor="let screen of ScreenShots ; let i = index;">
-                    <img [src]="screen[1].image" class="d-block w-100" [alt]="screen[1].id">
+                    <img [src]="screen[1].image" class="d-block w-100" [alt]="screen[1].id" height="331">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -53,31 +53,29 @@
           </div>
         </div>
         <br>
-        <div *ngIf="MinrequirementsArray">
+        <div>
           <h3>Minimum System Requirements</h3>
           <ul>
             <li *ngFor="let minR of MinrequirementsArray">
-              <b>{{minR[0]}}:</b> {{minR[1]}}
+              <ng-container>
+                <div *ngIf="minR[1]!==null; else noMinR">
+                  <b>{{minR[0]}}:</b> {{minR[1]}}
+                </div>
+                <ng-template #noMinR>
+                  <b>{{minR[0]}}:</b> Not available
+                </ng-template>
+              </ng-container>
             </li>
           </ul>
         </div>
-
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aut alias accusamus dignissimos
-          saepe ipsam consequuntur provident minus in maiores delectus voluptatem facere, neque, odio deleniti, omnis
-          minima tempore itaque.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe cumque necessitatibus enim officia nulla,
-          voluptatem qui vitae quod velit, eaque molestiae praesentium architecto maxime unde ea. Optio quo rem tempore?
-        </p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium dolor temporibus ex corrupti rem
-          blanditiis. Nobis officiis vel eaque architecto, tenetur obcaecati ea labore nihil dolores molestias nam
-          eligendi delectus error? Soluta provident animi laudantium vel? Beatae temporibus facilis hic sunt doloribus.
-          Labore, optio!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim doloremque perferendis illum asperiores illo,
-          placeat corporis alias veritatis nisi, adipisci labore. Qui voluptatem laudantium pariatur facere eum. Non,
-          nostrum! Enim, a. Voluptates, ex doloremque.</p>
       </div>
     </div>
   </div>
 
 
 </div>
+<ng-template #noGames>
+  <div class="cont-games">
+    <h2 style="color: white; text-align: center;">The game was not found</h2>
+  </div>
+</ng-template>

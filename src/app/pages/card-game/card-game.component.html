@@ -1,38 +1,39 @@
 <ng-container *ngIf="(games$ | async) as games">
-  <div class="cont-games " *ngIf="games.length > 0; else noGames">
-
+  <div class="{{controlWidth}} " *ngIf="games.length > 0; else noGames">
     <br>
-    <!-- <filters-games></filters-games> -->
     <div class="filters">
-      <label for="" style="color: aliceblue;">Titulo</label>
+      <label for="" style="color: aliceblue;">Title</label>
       <input type="text" class="form-control" name="filterName" [(ngModel)]="filterName">
-      <label for="" style="color: aliceblue;">Genero</label>
+      <label for="" style="color: aliceblue;">Genre</label>
+      <div class="form-responsive">
       <select class="form-select" [(ngModel)]="filterGender">
-        <option value="" style="color: black;">Seleccione un genero</option>
+        <option value="" style="color: black;">Select a genre</option>
         <option *ngFor="let gender of genres" [value]="gender">{{gender}}</option>
       </select>
-      <label for="" style="color: aliceblue;">Plataforma</label>
+      </div>
+      <label for="" style="color: aliceblue;">Platform</label>
       <select class="form-select" [(ngModel)]="filterPlatform">
-        <option value="" style="color: black;">Seleccione un genero</option>
+        <option value="" style="color: black;">Select a platform</option>
         <option *ngFor="let platform of platforms" [value]="platform">{{platform}}</option>
       </select>
     </div>
     <br>
     <div class="cont-card">
-      <div class="card" style="width: 18rem;"*ngFor="let game of games | titleFilter:filterName | genderFilter:filterGender | platformFilter:filterPlatform"  >
-        <img class="card-img-top" src="{{game.thumbnail}}" priority  width="365" height="206" style=" height: auto;" >
+      <div class="card" style="width: 18rem;"
+        *ngFor="let game of games | titleFilter:filterName | genderFilter:filterGender | platformFilter:filterPlatform">
+
+        <img class="card-img-top" src="{{game.thumbnail}}" priority width="365" height="206" style=" height: auto;">
         <div class="card-body">
           <h5 class="card-title">{{ game.title }}</h5>
           <p class="card-text">{{ game.short_description }}</p>
         </div>
-        <a [routerLink]="['/game-details', game.id]" class="btn btn-success moreInfo">Más información</a>
+        <a [routerLink]="['/game-details', game.id]" class="btn btn-success">More information</a>
       </div>
     </div>
   </div>
   <ng-template #noGames>
     <div class="cont-games">
-      <h2 style="color: white; text-align: center;">No se encontraron juegos</h2>
+      <h2 style="color: white; text-align: center;">No games found</h2>
     </div>
   </ng-template>
 </ng-container>
-

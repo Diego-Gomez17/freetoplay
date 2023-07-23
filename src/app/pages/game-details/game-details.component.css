@@ -6,8 +6,12 @@
 
   color: white;
   background-color: rgb(56, 77, 94);
-  border: 1px solid black;
-  border-radius: 45px;
+  border-radius: 25px;
+  padding: 25px;
+}
+.cont-games-min{
+  color: white;
+  background-color: rgb(56, 77, 94);
   padding: 25px;
 }
 .sidebar {
@@ -15,6 +19,9 @@
   position: sticky;
   top: 75px;
   z-index: 1;
+}
+.cont-bodyGame p {
+  word-wrap: break-word; /* Evita que las palabras largas rompan el diseño */
 }
 #img-principal{
   width: 100%;

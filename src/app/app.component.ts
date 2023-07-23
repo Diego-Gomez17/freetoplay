@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'freegame';
+  title = 'FreeGame!!';
+  screenWidthMain!: number;
+  controlWidthMain= 'title';
+
+  constructor(private router: Router) {}
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidthMain = window.innerWidth;
+    if (this.screenWidthMain < 768) {
+      this.controlWidthMain = 'title-min';
+    } else {
+      this.controlWidthMain = 'title';
+    }
+  }
+
+  redirectHome() {
+    this.router.navigate(['/']);
+  }
 }

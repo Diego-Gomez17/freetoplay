@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CardGameComponent } from './pages/card-game/card-game.component';
-import { FiltersComponent } from './components/filters/filters.component';
 import { TitleFilterPipe } from './pipes/title-filter.pipe';
 import { GenderFilterPipe } from './pipes/gender-filter.pipe';
 import { PlatformFilterPipe } from './pipes/platform-filter.pipe';
@@ -18,7 +17,6 @@ import { GameDetailsComponent } from './pages/game-details/game-details.componen
     AppComponent,
     CardGameComponent,
     GameDetailsComponent,
-    FiltersComponent,
     TitleFilterPipe,
     GenderFilterPipe,
     PlatformFilterPipe
